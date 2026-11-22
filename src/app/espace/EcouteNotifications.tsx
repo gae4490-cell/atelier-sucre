@@ -22,7 +22,7 @@ export function EcouteNotifications({ atelierId }: { atelierId: string }) {
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "notifications", filter: `atelier_id=eq.${atelierId}` },
-        (payload) => {
+        (payload: { new: { titre?: string } }) => {
           const titre = (payload.new as { titre?: string }).titre;
           setMessage(titre ?? "Nouvelle notification");
           router.refresh();
