@@ -1,14 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import type { CSSProperties } from "react";
 import "./globals.css";
 
-const serif = Fraunces({ subsets: ["latin"], variable: "--font-serif", display: "swap", weight: ["500", "600", "700"] });
-const sans = Inter({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const fonts = {
+  "--font-serif": "Georgia, serif",
+  "--font-sans": "Arial, sans-serif",
+} as CSSProperties;
 
 export const metadata: Metadata = {
   title: { default: "Atelier Sucré", template: "%s · Atelier Sucré" },
-  description: "Les demandes de gâteaux sur mesure de vos clients, directement depuis votre bio Instagram.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  description:
+    "Les demandes de gâteaux sur mesure de vos clients, directement depuis votre bio Instagram.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  ),
 };
 
 export const viewport: Viewport = {
@@ -20,7 +25,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="fr" style={fonts}>
       <body>{children}</body>
     </html>
   );
