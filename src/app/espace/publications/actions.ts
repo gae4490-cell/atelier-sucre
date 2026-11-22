@@ -13,6 +13,7 @@ export type EtatPub = { erreur?: string; succes?: string; pro?: boolean } | null
 
 const ERREURS: Record<string, string> = {
   offre_pro_requise: "La publication d'une vente flash fait partie de l'offre Pro.",
+  limite_publication_gratuite: "L’offre Gratuit permet de publier un gâteau à la fois. Archivez le gâteau déjà publié pour en mettre un autre en ligne.",
   titre_requis: "Donnez un titre à votre gâteau.",
   prix_requis: "Indiquez le prix fixe de la vente flash (0,50 € minimum).",
   stock_requis: "Indiquez la quantité disponible.",

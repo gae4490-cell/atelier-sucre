@@ -20,10 +20,10 @@ export const abonnementCourant = cache(async (): Promise<InfosAbonnement> => {
     supabase.rpc("offre_active", { p_atelier: atelier.id }),
     supabase.from("abonnements").select("offre, statut, fin_acces, stripe_customer_id").eq("atelier_id", atelier.id).maybeSingle(),
   ]);
-  const active = (offre as IdOffre) ?? "essentiel";
+  const active = (offre as IdOffre) ?? "gratuit";
   return {
     offreActive: active,
-    offreChoisie: (ab?.offre as IdOffre) ?? "essentiel",
+    offreChoisie: (ab?.offre as IdOffre) ?? "gratuit",
     statut: ab?.statut ?? "actif",
     finAcces: ab?.fin_acces ?? null,
     clientStripe: ab?.stripe_customer_id ?? null,

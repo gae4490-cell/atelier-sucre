@@ -1,7 +1,7 @@
 // Offres d'abonnement — hypothèses de lancement, à modifier ici uniquement.
 // Les droits sont vérifiés côté serveur (fonctions offre_active / est_pro en base).
 
-export type IdOffre = "essentiel" | "pro" | "atelier";
+export type IdOffre = "gratuit" | "essentiel" | "pro" | "atelier";
 
 export interface Offre {
   id: IdOffre;
@@ -14,6 +14,18 @@ export interface Offre {
 }
 
 export const OFFRES: Offre[] = [
+    {
+    id: "gratuit",
+    nom: "Gratuit",
+    prixMensuelEuros: 0,
+    limiteDemandesMois: 5,
+    fonctionnalites: [
+      "1 compte et 1 vitrine avec lien Instagram",
+      "1 gâteau publié sur la vitrine",
+      "Jusqu’à 5 demandes de devis par mois",
+      "Inscription sans carte bancaire",
+    ],
+  },
   {
     id: "essentiel",
     nom: "Essentiel",
