@@ -1,0 +1,46 @@
+# Configuration pour le développement local avec la CLI Supabase (`supabase start`).
+# Pour un projet hébergé, reportez ces réglages dans le tableau de bord (voir docs/DEPLOIEMENT.md).
+project_id = "atelier-sucre"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[realtime]
+enabled = true
+
+[storage]
+enabled = true
+file_size_limit = "5MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/**", "http://192.168.*.*:3000/**"]
+jwt_expiry = 3600
+enable_signup = true
+minimum_password_length = 8
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+double_confirm_changes = true
+max_frequency = "1m0s"
+
+[auth.email.template.confirmation]
+subject = "Activez votre compte Atelier Sucré"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Réinitialisez votre mot de passe Atelier Sucré"
+content_path = "./supabase/templates/recovery.html"
+
+[inbucket]
+enabled = true
+port = 54324
